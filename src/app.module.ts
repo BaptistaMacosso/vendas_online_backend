@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { LocalizacaoModule } from './localizacao/localizacao.module';
 
 @Module({
   imports: [
@@ -16,10 +17,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: process.env.DB_PASSWORD,
       port: Number(process.env.DB_PORT),
       username: process.env.DB_USER,
-      synchronize: true,
+      //synchronize: true, //Não deve ser usado em produção
       entities: [`${__dirname}/**/*.entity{.js,.ts}`],
+      migrations: [`${__dirname}/migration/{.ts,*.js}`],
+      migrationsRun: true,
     }),
-    UserModule],
+    UserModule,
+    LocalizacaoModule],
   controllers: [],
   providers: [],
 })
