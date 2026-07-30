@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { LocalizacaoService } from './localizacao.service';
 import { ProvinciaEntity } from './interface/provincias.entity';
 import { MunicipioEntity } from './interface/municipios.entity';
@@ -16,6 +16,11 @@ export class LocalizacaoController {
     @Get('/municipios')
     async getAllMunicipios() : Promise<MunicipioEntity[]> {
         return this.localizacaoService.getAllMunicipios();
+    }
+
+    @Get('/municipios/:provinciaId')
+    async getMunicipiosByPronviciaId(@Param('provinciaId') provinciaId: Number) : Promise<MunicipioEntity[]> {
+        return this.localizacaoService.getMunicipiosByPronviciaId(Number(provinciaId));
     }
 
     @Get('/enderecos')

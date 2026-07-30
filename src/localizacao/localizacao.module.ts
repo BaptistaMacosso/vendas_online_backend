@@ -5,9 +5,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProvinciaEntity } from './interface/provincias.entity';
 import { MunicipioEntity } from './interface/municipios.entity';
 import { EnderecoEntity } from './interface/enderecos.entity';
+import { CacheModule as  CacheModuleNest} from '@nestjs/cache-manager';
+import { CacheModule } from 'src/cache/cache.module';
+
 
 @Module({
-  imports: [TypeOrmModule.forFeature([ProvinciaEntity, MunicipioEntity, EnderecoEntity])],
+  imports: [
+    CacheModuleNest.register(),
+    CacheModule,
+    TypeOrmModule.forFeature([ProvinciaEntity, MunicipioEntity, EnderecoEntity],
+    ),
+  ],
   controllers: [LocalizacaoController],
   providers: [LocalizacaoService]
 })
