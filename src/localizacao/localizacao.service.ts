@@ -41,4 +41,8 @@ export class LocalizacaoService {
       async getAllEnderecos() : Promise<EnderecoEntity[]> {
         return this.enderecoRepository.find();
      }
+
+     async createEndereco(endereco: EnderecoEntity, userId: number) : Promise<EnderecoEntity> {
+        return this.enderecoRepository.save(endereco, { data: { userId } });
+     }
 }

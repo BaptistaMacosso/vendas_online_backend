@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, ValidationPipe } from '@nestjs/common';
 import { LocalizacaoService } from './localizacao.service';
 import { ProvinciaEntity } from './interface/provincias.entity';
 import { MunicipioEntity } from './interface/municipios.entity';
@@ -26,5 +26,10 @@ export class LocalizacaoController {
     @Get('/enderecos')
     async getAllEnderecos() : Promise<EnderecoEntity[]> {
         return this.localizacaoService.getAllEnderecos();
+    }
+
+    @Post('/enderecos/:userId')
+    async createEndereco(@Body(new ValidationPipe()) endereco: EnderecoEntity, @Param('userId') userId: number,) : Promise<EnderecoEntity> {
+        return this.localizacaoService.createEndereco(endereco, userId);
     }
 }

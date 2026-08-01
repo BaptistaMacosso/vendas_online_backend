@@ -3,26 +3,26 @@ import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateCol
 @Entity({name: 'user'})
 export class UserEntity {
     @PrimaryGeneratedColumn('rowid')
-    id: number;
+    id!: number;
 
     @Column({name: 'name', nullable: false})
-    name: string;
+    name!: string;
 
-    @Column({name: 'phone', nullable: false})
-    phone: string;
+    @Column({name: 'phone', nullable: false, unique: true})
+    phone?: string;
 
-    @Column({name: 'email', nullable: true})
-    email: string;
+    @Column({name: 'email', nullable: true, unique: true})
+    email!: string;
 
     @Column({name: 'password', nullable: false})
-    password: string;
+    password!: string;
 
     @Column({name: 'type_user', nullable: false})
-    typeUser: number;
+    typeUser!: number;
 
     @CreateDateColumn({name: 'created_at'})
-    created_at: Date;
+    created_at!: Date;
 
     @UpdateDateColumn({name: 'updated_at'})
-    updated_at: Date;
+    updated_at!: Date;
 }

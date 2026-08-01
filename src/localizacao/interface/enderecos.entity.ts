@@ -10,58 +10,64 @@ import {
 
 import { ProvinciaEntity } from './provincias.entity';
 import { MunicipioEntity } from './municipios.entity';
+import { UserEntity } from 'src/user/dtos/interface/user.entity';
 
 @Entity('enderecos')
 export class EnderecoEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
+
+  @ManyToOne(() => UserEntity, user => user.id,
+    { nullable: false, eager: true, },)
+  @JoinColumn({ name: 'user_id', })
+  user!: UserEntity;
 
   @ManyToOne(() => ProvinciaEntity, provincia => provincia.enderecos,
     { nullable: false, eager: true, },)
   @JoinColumn({ name: 'provincia_id', })
-  provincia: ProvinciaEntity;
+  provincia!: ProvinciaEntity;
 
   @ManyToOne(() => MunicipioEntity, municipio => municipio.enderecos,
     { nullable: false, eager: true,},)
   @JoinColumn({ name: 'municipio_id', })
-  municipio: MunicipioEntity;
+  municipio!: MunicipioEntity;
 
   @Column({
     nullable: true,
     length: 120,
   })
-  comuna: string;
+  comuna?: string;
 
   @Column({
     nullable: true,
     length: 120,
   })
-  bairro: string;
+  bairro?: string;
 
   @Column({
     nullable: true,
     length: 200,
   })
-  rua: string;
+  rua?: string;
 
   @Column({
     nullable: true,
     length: 20,
   })
-  numero: string;
+  numero?: string;
 
   @Column({
     nullable: true,
     length: 255,
   })
-  referencia: string;
+  referencia?: string;
 
   @Column({
     nullable: true,
     name: 'codigo_postal',
     length: 20,
   })
-  codigoPostal: string;
+  codigoPostal?: string;
 
   @Column({
     type: 'decimal',
@@ -69,7 +75,7 @@ export class EnderecoEntity {
     scale: 7,
     nullable: true,
   })
-  latitude: number;
+  latitude?: number;
 
   @Column({
     type: 'decimal',
@@ -77,15 +83,15 @@ export class EnderecoEntity {
     scale: 7,
     nullable: true,
   })
-  longitude: number;
+  longitude?: number;
 
   @CreateDateColumn({
     name: 'created_at',
   })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({
     name: 'updated_at',
   })
-  updatedAt: Date;
+  updatedAt!: Date;
 }

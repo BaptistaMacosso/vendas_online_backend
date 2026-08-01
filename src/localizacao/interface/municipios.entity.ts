@@ -15,21 +15,21 @@ import { EnderecoEntity } from './enderecos.entity';
 @Entity('municipios')
 export class MunicipioEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({ length: 120 })
-  nome: string;
+  nome!: string;
 
   @ManyToOne(() => ProvinciaEntity, provincia => provincia.municipios, { nullable: false, onDelete: 'RESTRICT' })
   @JoinColumn({ name: 'provincia_id' })
-  provincia: ProvinciaEntity;
+  provincia!: ProvinciaEntity;
 
   @OneToMany(() => EnderecoEntity, endereco => endereco.municipio )
-  enderecos: EnderecoEntity[];
+  enderecos!: EnderecoEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 }

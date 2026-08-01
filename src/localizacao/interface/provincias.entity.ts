@@ -12,23 +12,23 @@ import { EnderecoEntity } from './enderecos.entity';
 @Entity('provincias')
 export class ProvinciaEntity {
   @PrimaryGeneratedColumn()
-  id: number;
+  id!: number;
 
   @Column({ unique: true, length: 100 })
-  nome: string;
+  nome!: string;
 
   @Column({ unique: true, length: 5, nullable: true })
-  codigo: string;
+  codigo!: string;
 
   @OneToMany(() => MunicipioEntity, municipio => municipio.provincia)
-  municipios: MunicipioEntity[];
+  municipios!: MunicipioEntity[];
 
   @OneToMany(() => EnderecoEntity, endereco => endereco.provincia)
-  enderecos: EnderecoEntity[];
+  enderecos!: EnderecoEntity[];
 
   @CreateDateColumn({ name: 'created_at' })
-  createdAt: Date;
+  createdAt!: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
-  updatedAt: Date;
+  updatedAt!: Date;
 }
