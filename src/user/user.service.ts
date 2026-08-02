@@ -44,12 +44,32 @@ export class UserService {
     }
 
     async findUserById(id: number) : Promise<UserEntity | null> {
-        return this.userRepository.findOne({
-            where: {
-                userId: id
-            }
+        const user = await this.userRepository.findOne({
+            where: { userId: id }
         });
+        if (!user) {
+            throw new NotFoundException(`User with ID ${id} not found.`);
+        }
+
+        return user;
     }
+
+    async findUserByIdUsingRelations(id: number) : Promise<UserEntity> {
+        const user = await this.userRepository.findOne({
+            where: { 
+                userId: id,
+             },
+             relations:{
+                enderecos: true,
+             }
+        });
+
+        if (!user) {
+            throw new NotFoundException(`User with ID ${id} not found.`);   
+        };
+
+        return user;    
+    };
 
     async updateUser(id: number, updateUserDto: Partial<CreateUserDto>) : Promise<UserEntity> {
         const user = await this.findUserById(id);

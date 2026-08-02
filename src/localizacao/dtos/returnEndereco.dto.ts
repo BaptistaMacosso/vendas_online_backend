@@ -4,8 +4,8 @@ import { ReturnMunicipioDto } from "./returnMunicipio.dto";
 import { ReturnProvinciaDto } from "./returnProvincia.dto";
 
 export class ReturnEnderecoDto {
-    enderecoId!: number;
     user!: ReturnUserDto;
+    enderecoId!: number;
     provincia!: ReturnProvinciaDto;
     municipio!: ReturnMunicipioDto;
     comuna?: string;
@@ -17,9 +17,9 @@ export class ReturnEnderecoDto {
     latitude!: number;
     longitude!: number;
 
-    constructor(endereco: EnderecoEntity) {
+    constructor(endereco: EnderecoEntity, user?: ReturnUserDto) {
         this.enderecoId = endereco.enderecoId;
-        this.user = new ReturnUserDto(endereco.user);
+        this.user = user || new ReturnUserDto(endereco.user);
         this.provincia = new ReturnProvinciaDto(endereco.provincia);
         this.municipio = new ReturnMunicipioDto(endereco.municipio);
         this.comuna = endereco.comuna;

@@ -3,6 +3,7 @@ import type { CreateUserDto } from './dtos/createUser.dto';
 import { UserService } from './user.service';
 import { UserEntity } from './dtos/interface/user.entity';
 import { ReturnUserDto } from './dtos/returnUser.dto';
+import { ReturnEnderecoDto } from 'src/localizacao/dtos/returnEndereco.dto';
 
 @Controller('user')
 export class UserController {
@@ -30,5 +31,17 @@ export class UserController {
     @Get()
     async getAllUser() : Promise<ReturnUserDto[]> {
         return (await this.userService.getAllUser()).map((user: UserEntity) => new ReturnUserDto(user),);
+    }
+
+    @Get('/find/:id')
+    async findUserById(@Param('id') id: number) : Promise<ReturnUserDto> {
+        const user = await this.userService.findUserById(id);
+        return new ReturnUserDto(user || new UserEntity());
+    }
+
+    @Get('/find-user-address/:id')
+    async findUserByIdUsingRelations(@Param('id') id: number) : Promise<ReturnEnderecoDto> {
+        const user = await this.userService.findUserByIdUsingRelations(id);
+        return new ReturnEnderecoDto(user.enderecos[0], new ReturnUserDto(user));
     }
 }
