@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Put, ValidationPipe } from '@nestjs/common';
 import type { CreateUserDto } from './dtos/createUser.dto';
 import { UserService } from './user.service';
 import { UserEntity } from './dtos/interface/user.entity';
@@ -8,9 +8,15 @@ import { ReturnUserDto } from './dtos/returnUser.dto';
 export class UserController {
     constructor(private readonly userService: UserService){}
 
-    @Post()
-    async create(@Body(new ValidationPipe()) createUser: CreateUserDto) : Promise<UserEntity> {
-        return this.userService.createUser(createUser);
+    @Post('create')
+    async create(@Body(new ValidationPipe()) createUser: CreateUserDto) : Promise<ReturnUserDto> {
+        return new ReturnUserDto(await this.userService.createUser(createUser));
+    }
+
+    @Put('update/:id')
+    async updateUser(@Body(new ValidationPipe()) updateUserDto: Partial<CreateUserDto>, @Param('id') id: number): Promise<ReturnUserDto> {
+        const updatedUser = await this.userService.updateUser(id, updateUserDto);
+        return new ReturnUserDto(updatedUser);
     }
 
     //*

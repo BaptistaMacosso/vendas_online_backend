@@ -3,6 +3,7 @@ import { LocalizacaoService } from './localizacao.service';
 import { ProvinciaEntity } from './interface/provincias.entity';
 import { MunicipioEntity } from './interface/municipios.entity';
 import { EnderecoEntity } from './interface/enderecos.entity';
+import { CreateEnderecoDto } from './dtos/createEndereco.dto';
 
 @Controller('localizacao')
 export class LocalizacaoController {
@@ -28,8 +29,8 @@ export class LocalizacaoController {
         return this.localizacaoService.getAllEnderecos();
     }
 
-    @Post('/enderecos/:userId')
-    async createEndereco(@Body(new ValidationPipe()) endereco: EnderecoEntity, @Param('userId') userId: number,) : Promise<EnderecoEntity> {
-        return this.localizacaoService.createEndereco(endereco, userId);
+    @Post('/enderecos/create')
+    async createEndereco(@Body(new ValidationPipe()) endereco: CreateEnderecoDto) : Promise<EnderecoEntity> {
+        return this.localizacaoService.createEndereco(endereco);
     }
 }

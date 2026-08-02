@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { UserEntity } from './dtos/interface/user.entity';
 import { CreateUserDto } from './dtos/createUser.dto';
 import * as bcrypt from "bcrypt";
@@ -13,8 +13,25 @@ export class UserService {
     ){}
 
     async createUser(createUserDto: CreateUserDto) : Promise<UserEntity>{
+
         const saltOrRounds = 10;
         const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
+
+        const userExists = await this.userRepository.findOne({
+            where: { email: createUserDto.email }
+        });
+
+        if (userExists) {
+            throw new BadRequestException(`User with email ${createUserDto.email} already exists.`);
+        }
+
+        const phoneExists = await this.userRepository.findOne({
+            where: { phone: createUserDto.phone }
+        });
+
+        if (phoneExists) {
+            throw new BadRequestException(`User with phone number ${createUserDto.phone} already exists.`);
+        }
 
         return this.userRepository.save({
             ...createUserDto,
@@ -24,5 +41,24 @@ export class UserService {
 
     async getAllUser() : Promise<UserEntity[]> {
         return this.userRepository.find();
+    }
+
+    async findUserById(id: number) : Promise<UserEntity | null> {
+        return this.userRepository.findOne({
+            where: {
+                id
+            }
+        });
+    }
+
+    async updateUser(id: number, updateUserDto: Partial<CreateUserDto>) : Promise<UserEntity> {
+        const user = await this.findUserById(id);
+        if (!user) {
+            throw new NotFoundException(`User with ID ${id} not found.`);
+        }
+
+        const updatedUser = { ...user, ...updateUserDto };
+        console.log('Updated User:', updatedUser); // Log the updated user object
+        return this.userRepository.save(updatedUser);
     }
 }

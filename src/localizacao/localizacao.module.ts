@@ -7,6 +7,7 @@ import { MunicipioEntity } from './interface/municipios.entity';
 import { EnderecoEntity } from './interface/enderecos.entity';
 import { CacheModule as  CacheModuleNest} from '@nestjs/cache-manager';
 import { CacheModule } from 'src/cache/cache.module';
+import { UserModule } from 'src/user/user.module';
 
 
 @Module({
@@ -15,6 +16,7 @@ import { CacheModule } from 'src/cache/cache.module';
     CacheModule,
     TypeOrmModule.forFeature([ProvinciaEntity, MunicipioEntity, EnderecoEntity],
     ),
+    UserModule,
   ],
   controllers: [LocalizacaoController],
   providers: [LocalizacaoService]

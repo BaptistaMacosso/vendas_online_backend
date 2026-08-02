@@ -1,10 +1,12 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProvinciaEntity } from './interface/provincias.entity';
 import { MunicipioEntity } from './interface/municipios.entity';
 import { EnderecoEntity } from './interface/enderecos.entity';
 import { Repository } from 'typeorm';
 import { CacheService } from 'src/cache/cache.service';
+import { UserService } from 'src/user/user.service';
+import { CreateEnderecoDto } from './dtos/createEndereco.dto';
 
 @Injectable()
 export class LocalizacaoService {
@@ -16,6 +18,7 @@ export class LocalizacaoService {
         @InjectRepository(EnderecoEntity)
         private readonly enderecoRepository: Repository<EnderecoEntity>,
         private readonly cacheService: CacheService,
+        private readonly userService: UserService,
      ){}
 
      async getAllProvincias() : Promise<ProvinciaEntity[]> {
@@ -42,7 +45,37 @@ export class LocalizacaoService {
         return this.enderecoRepository.find();
      }
 
-     async createEndereco(endereco: EnderecoEntity, userId: number) : Promise<EnderecoEntity> {
-        return this.enderecoRepository.save(endereco, { data: { userId } });
+     async createEndereco(createEnderecoDto: CreateEnderecoDto) : Promise<EnderecoEntity> {
+
+         const user = await this.userService.findUserById(createEnderecoDto.userId);
+         if(!user){
+             throw new NotFoundException(`User with ID ${createEnderecoDto.userId} not found.`);
+         }
+
+         const provincia = await this.provinciaRepository.findOne({ where: { id: createEnderecoDto.provinciaId } });
+         if(!provincia){
+             throw new NotFoundException(`Provincia with ID ${createEnderecoDto.provinciaId} not found.`);
+         }
+
+         const municipio = await this.municipioRepository.findOne({ where: { id: createEnderecoDto.municipioId } });
+         if(!municipio){
+             throw new NotFoundException(`Municipio with ID ${createEnderecoDto.municipioId} not found.`);
+         }
+      
+         const enderecoDto = this.enderecoRepository.create({
+            user: user,
+            provincia: provincia,
+            municipio: municipio,
+            comuna: createEnderecoDto.comuna,
+            bairro: createEnderecoDto.bairro,
+            rua: createEnderecoDto.rua,
+            numero: createEnderecoDto.numero,
+            referencia: createEnderecoDto.referencia,
+            codigoPostal: createEnderecoDto.codigoPostal,
+            latitude: createEnderecoDto.latitude,
+            longitude: createEnderecoDto.longitude,
+         });
+
+         return this.enderecoRepository.save(enderecoDto);
      }
 }

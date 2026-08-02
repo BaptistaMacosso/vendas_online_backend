@@ -17,9 +17,8 @@ export class EnderecoEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => UserEntity, user => user.id,
-    { nullable: false, eager: true, },)
-  @JoinColumn({ name: 'user_id', })
+  @ManyToOne(() => UserEntity, user => user.enderecos)
+  @JoinColumn({ name: 'user_id' })
   user!: UserEntity;
 
   @ManyToOne(() => ProvinciaEntity, provincia => provincia.enderecos,

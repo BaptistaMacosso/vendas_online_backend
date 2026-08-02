@@ -1,12 +1,16 @@
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateEnderecoDto {
-  @IsString()
-  @IsNotEmpty()
+  @IsNumber()
+  @IsNotEmpty({ message: 'User ID is required' })
+  userId!: number;
+
+  @IsNumber()
+  @IsNotEmpty({ message: 'Provincia ID is required' })
   provinciaId!: number;
 
-  @IsString()
-  @IsNotEmpty()
+  @IsNumber()
+  @IsNotEmpty({ message: 'Municipio ID is required' })
   municipioId!: number;
 
   @IsString()
@@ -34,10 +38,10 @@ export class CreateEnderecoDto {
   codigoPostal?: string;
 
   @IsNumber()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Latitude is required' })
   latitude!: number;
   
   @IsNumber()
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'Longitude is required' })
   longitude!: number;
 }

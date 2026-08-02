@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LocalizacaoModule } from './localizacao/localizacao.module';
 import { CacheModule } from './cache/cache.module';
+import { UserService } from './user/user.service';
 
 @Module({
   imports: [
