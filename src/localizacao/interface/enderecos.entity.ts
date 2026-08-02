@@ -14,8 +14,8 @@ import { UserEntity } from 'src/user/dtos/interface/user.entity';
 
 @Entity('enderecos')
 export class EnderecoEntity {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn({ name: 'enderecos_id' })
+  enderecoId!: number;
 
   @ManyToOne(() => UserEntity, user => user.enderecos)
   @JoinColumn({ name: 'user_id' })

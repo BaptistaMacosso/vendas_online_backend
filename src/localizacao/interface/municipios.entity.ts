@@ -14,11 +14,11 @@ import { EnderecoEntity } from './enderecos.entity';
 
 @Entity('municipios')
 export class MunicipioEntity {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn({ name: 'municipio_id' })
+  municipioId!: number;
 
-  @Column({ length: 120 })
-  nome!: string;
+  @Column({ length: 120, name: 'nome_municipio' })
+  nomeMunicipio!: string;
 
   @ManyToOne(() => ProvinciaEntity, provincia => provincia.municipios, { nullable: false, onDelete: 'RESTRICT' })
   @JoinColumn({ name: 'provincia_id' })

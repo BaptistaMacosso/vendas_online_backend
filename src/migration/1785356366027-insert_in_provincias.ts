@@ -4,7 +4,7 @@ export class InsertInProvincias1785356366027 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         queryRunner.query(`
-            INSERT INTO public.provincias (codigo, nome) VALUES
+            INSERT INTO public.provincias (codigo, nome_provincia) VALUES
             ('BGO','Bengo'),
             ('BGU','Benguela'),
             ('BIE','Bié'),

@@ -3,8 +3,8 @@ import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, Up
 
 @Entity({name: 'user'})
 export class UserEntity {
-    @PrimaryGeneratedColumn('rowid')
-    id!: number;
+    @PrimaryGeneratedColumn({ name: 'user_id' })
+    userId!: number;
 
     @Column({name: 'name', nullable: false})
     name!: string;

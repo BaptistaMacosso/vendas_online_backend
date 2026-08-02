@@ -46,7 +46,7 @@ export class UserService {
     async findUserById(id: number) : Promise<UserEntity | null> {
         return this.userRepository.findOne({
             where: {
-                id
+                userId: id
             }
         });
     }
@@ -58,7 +58,6 @@ export class UserService {
         }
 
         const updatedUser = { ...user, ...updateUserDto };
-        console.log('Updated User:', updatedUser); // Log the updated user object
         return this.userRepository.save(updatedUser);
     }
 }

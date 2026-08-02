@@ -11,11 +11,11 @@ import { EnderecoEntity } from './enderecos.entity';
 
 @Entity('provincias')
 export class ProvinciaEntity {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn({ name: 'provincia_id' })
+  provinciaId!: number;
 
-  @Column({ unique: true, length: 100 })
-  nome!: string;
+  @Column({ unique: true, length: 100, name: 'nome_provincia' })
+  nomeProvincia!: string;
 
   @Column({ unique: true, length: 5, nullable: true })
   codigo!: string;

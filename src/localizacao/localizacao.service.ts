@@ -35,14 +35,20 @@ export class LocalizacaoService {
         return this.cacheService.getCache<MunicipioEntity[]>(`${provinciaId}`, () => this.municipioRepository.find({
          where: { 
             provincia: {
-               id: provinciaId
+               provinciaId: provinciaId
             },
          }
         }));
      }
 
       async getAllEnderecos() : Promise<EnderecoEntity[]> {
-        return this.enderecoRepository.find();
+        return this.enderecoRepository.find({
+         relations: {
+            user: true,
+            provincia: true,
+            municipio: true
+         }
+        });
      }
 
      async createEndereco(createEnderecoDto: CreateEnderecoDto) : Promise<EnderecoEntity> {
@@ -52,12 +58,12 @@ export class LocalizacaoService {
              throw new NotFoundException(`User with ID ${createEnderecoDto.userId} not found.`);
          }
 
-         const provincia = await this.provinciaRepository.findOne({ where: { id: createEnderecoDto.provinciaId } });
+         const provincia = await this.provinciaRepository.findOne({ where: { provinciaId: createEnderecoDto.provinciaId } });
          if(!provincia){
              throw new NotFoundException(`Provincia with ID ${createEnderecoDto.provinciaId} not found.`);
          }
 
-         const municipio = await this.municipioRepository.findOne({ where: { id: createEnderecoDto.municipioId } });
+         const municipio = await this.municipioRepository.findOne({ where: { municipioId: createEnderecoDto.municipioId } });
          if(!municipio){
              throw new NotFoundException(`Municipio with ID ${createEnderecoDto.municipioId} not found.`);
          }

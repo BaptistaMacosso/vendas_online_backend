@@ -13,7 +13,7 @@ export class CreateTableUser1785351505325 implements MigrationInterface {
 
         CREATE TABLE IF NOT EXISTS public."user"
         (
-            id INTEGER NOT NULL DEFAULT nextval('public.user_id_seq'),
+            user_id INTEGER NOT NULL DEFAULT nextval('public.user_id_seq'),
             name VARCHAR(150) NOT NULL,
             phone VARCHAR(20) NOT NULL,
             email VARCHAR(255),
@@ -21,13 +21,13 @@ export class CreateTableUser1785351505325 implements MigrationInterface {
             type_user INTEGER NOT NULL,
             created_at TIMESTAMP NOT NULL DEFAULT NOW(),
             updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
-            CONSTRAINT pk_user PRIMARY KEY (id),
+            CONSTRAINT pk_user PRIMARY KEY (user_id),
             CONSTRAINT uq_user_email UNIQUE (email),
             CONSTRAINT uq_user_phone UNIQUE (phone)
         );
 
         ALTER SEQUENCE public.user_id_seq
-            OWNED BY public."user".id;
+            OWNED BY public."user".user_id;
         `)
     }
 

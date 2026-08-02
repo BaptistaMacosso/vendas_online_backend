@@ -7,7 +7,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- BENGO
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (1,'Ambriz'),
             (1,'Bula Atumba'),
             (1,'Dande'),
@@ -18,7 +18,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- BENGUELA
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (2,'Balombo'),
             (2,'Baía Farta'),
             (2,'Benguela'),
@@ -33,7 +33,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- BIÉ
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (3,'Andulo'),
             (3,'Camacupa'),
             (3,'Catabola'),
@@ -47,7 +47,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- CABINDA
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (4,'Belize'),
             (4,'Buco-Zau'),
             (4,'Cabinda'),
@@ -56,7 +56,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- CUANDO CUBANGO
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (5,'Calai'),
             (5,'Cuangar'),
             (5,'Cuchi'),
@@ -69,7 +69,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- CUANZA NORTE
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (6,'Ambaca'),
             (6,'Banga'),
             (6,'Bolongongo'),
@@ -84,7 +84,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- CUANZA SUL
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (7,'Amboim'),
             (7,'Cassongue'),
             (7,'Conda'),
@@ -101,7 +101,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- CUNENE
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (8,'Cahama'),
             (8,'Cuanhama'),
             (8,'Curoca'),
@@ -112,7 +112,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- HUAMBO
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (9,'Bailundo'),
             (9,'Caála'),
             (9,'Catchiungo'),
@@ -129,7 +129,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- HUÍLA
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (10,'Cacula'),
             (10,'Caconda'),
             (10,'Caluquembe'),
@@ -147,7 +147,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- LUANDA
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (11,'Belas'),
             (11,'Cacuaco'),
             (11,'Cazenga'),
@@ -159,7 +159,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- LUNDA NORTE
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (12,'Cambulo'),
             (12,'Capenda Camulemba'),
             (12,'Caungula'),
@@ -173,7 +173,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- LUNDA SUL
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (13,'Cacolo'),
             (13,'Dala'),
             (13,'Muconda'),
@@ -182,7 +182,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- MALANJE
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (14,'Cacuso'),
             (14,'Calandula'),
             (14,'Cambundi-Catembo'),
@@ -199,7 +199,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- MOXICO
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (15,'Alto Zambeze'),
             (15,'Bundas'),
             (15,'Camanongue'),
@@ -212,7 +212,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- NAMIBE
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (16,'Bibala'),
             (16,'Camucuio'),
             (16,'Moçâmedes'),
@@ -222,7 +222,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- UÍGE
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (17,'Alto Cauale'),
             (17,'Ambuíla'),
             (17,'Bembe'),
@@ -242,7 +242,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- ZAIRE
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (18,'Cuimba'),
             (18,'Mbanza Kongo'),
             (18,'Nóqui'),
@@ -253,7 +253,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- ICOLO E BENGO
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (19,'Catete'),
             (19,'Cabiri'),
             (19,'Bom Jesus'),
@@ -262,7 +262,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- MOXICO LESTE
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (20,'Cazombo'),
             (20,'Cameia'),
             (20,'Lumeje'),
@@ -271,7 +271,7 @@ export class InsertInMunicipios1785356376810 implements MigrationInterface {
             -- ==========================
             -- CUANDO
             -- ==========================
-            INSERT INTO municipios (provincia_id,nome) VALUES
+            INSERT INTO municipios (provincia_id,nome_municipio) VALUES
             (21,'Mavinga'),
             (21,'Dirico'),
             (21,'Rivungo'),

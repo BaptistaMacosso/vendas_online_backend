@@ -4,6 +4,7 @@ import { ProvinciaEntity } from './interface/provincias.entity';
 import { MunicipioEntity } from './interface/municipios.entity';
 import { EnderecoEntity } from './interface/enderecos.entity';
 import { CreateEnderecoDto } from './dtos/createEndereco.dto';
+import { ReturnEnderecoDto } from './dtos/returnEndereco.dto';
 
 @Controller('localizacao')
 export class LocalizacaoController {
@@ -25,8 +26,8 @@ export class LocalizacaoController {
     }
 
     @Get('/enderecos')
-    async getAllEnderecos() : Promise<EnderecoEntity[]> {
-        return this.localizacaoService.getAllEnderecos();
+    async getAllEnderecos() : Promise<ReturnEnderecoDto[]> {
+        return (await this.localizacaoService.getAllEnderecos()).map(endereco => new ReturnEnderecoDto(endereco));
     }
 
     @Post('/enderecos/create')
