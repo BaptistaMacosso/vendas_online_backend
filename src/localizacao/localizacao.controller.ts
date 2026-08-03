@@ -5,6 +5,7 @@ import { MunicipioEntity } from './interface/municipios.entity';
 import { EnderecoEntity } from './interface/enderecos.entity';
 import { CreateEnderecoDto } from './dtos/createEndereco.dto';
 import { ReturnEnderecoDto } from './dtos/returnEndereco.dto';
+import { ReturnEnderecoCriadoDto } from './dtos/returnEnderecoCriado.dto';
 
 @Controller('localizacao')
 export class LocalizacaoController {
@@ -31,7 +32,8 @@ export class LocalizacaoController {
     }
 
     @Post('/enderecos/create')
-    async createEndereco(@Body(new ValidationPipe()) endereco: CreateEnderecoDto) : Promise<EnderecoEntity> {
-        return this.localizacaoService.createEndereco(endereco);
+    async createEndereco(@Body(new ValidationPipe()) endereco: CreateEnderecoDto) : Promise<ReturnEnderecoCriadoDto> {
+        const createdEndereco = await this.localizacaoService.createEndereco(endereco);
+        return new ReturnEnderecoCriadoDto(createdEndereco);
     }
 }
