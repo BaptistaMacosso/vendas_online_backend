@@ -2,11 +2,13 @@ import { Body, Controller, Get, Param, Post, ValidationPipe } from '@nestjs/comm
 import { LocalizacaoService } from './localizacao.service';
 import { ProvinciaEntity } from './interface/provincias.entity';
 import { MunicipioEntity } from './interface/municipios.entity';
-import { EnderecoEntity } from './interface/enderecos.entity';
 import { CreateEnderecoDto } from './dtos/createEndereco.dto';
 import { ReturnEnderecoDto } from './dtos/returnEndereco.dto';
 import { ReturnEnderecoCriadoDto } from './dtos/returnEnderecoCriado.dto';
+import { Roles } from 'src/decorators/user-roles.decorator';
+import { UserType } from 'src/user/enums/user-type.enum';
 
+@Roles(UserType.User)
 @Controller('localizacao')
 export class LocalizacaoController {
     constructor(private readonly localizacaoService: LocalizacaoService){}
