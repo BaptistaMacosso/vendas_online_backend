@@ -1,8 +1,6 @@
 import { IsNotEmpty, IsNumber, IsOptional, IsString } from "class-validator";
 
 export class CreateEnderecoDto {
-  @IsNumber()
-  @IsNotEmpty({ message: 'User ID is required' })
   userId!: number;
 
   @IsNumber()

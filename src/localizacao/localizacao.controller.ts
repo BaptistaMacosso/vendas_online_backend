@@ -7,6 +7,7 @@ import { ReturnEnderecoDto } from './dtos/returnEndereco.dto';
 import { ReturnEnderecoCriadoDto } from './dtos/returnEnderecoCriado.dto';
 import { Roles } from 'src/decorators/user-roles.decorator';
 import { UserType } from 'src/user/enums/user-type.enum';
+import { UserId } from 'src/decorators/user-id.decorator';
 
 @Roles(UserType.User)
 @Controller('localizacao')
@@ -34,8 +35,9 @@ export class LocalizacaoController {
     }
 
     @Post('/enderecos/create')
-    async createEndereco(@Body(new ValidationPipe()) endereco: CreateEnderecoDto) : Promise<ReturnEnderecoCriadoDto> {
-        const createdEndereco = await this.localizacaoService.createEndereco(endereco);
+    async createEndereco(@Body(new ValidationPipe()) endereco: CreateEnderecoDto, @UserId() userId: number) : Promise<ReturnEnderecoCriadoDto> {
+        const enderecoCreate = {...endereco, userId:Number(userId)};
+        const createdEndereco = await this.localizacaoService.createEndereco(enderecoCreate);
         return new ReturnEnderecoCriadoDto(createdEndereco);
     }
 }
