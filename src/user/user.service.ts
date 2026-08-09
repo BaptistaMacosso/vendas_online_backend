@@ -14,9 +14,6 @@ export class UserService {
 
     async createUser(createUserDto: CreateUserDto) : Promise<UserEntity>{
 
-        const saltOrRounds = 10;
-        const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
-
         const userExists = await this.userRepository.findOne({
             where: { email: createUserDto.email }
         });
@@ -32,6 +29,9 @@ export class UserService {
         if (phoneExists) {
             throw new BadRequestException(`User with phone number ${createUserDto.phone} already exists.`);
         }
+
+        const saltOrRounds = 10;
+        const hash = await bcrypt.hash(createUserDto.password, saltOrRounds);
 
         return this.userRepository.save({
             ...createUserDto,

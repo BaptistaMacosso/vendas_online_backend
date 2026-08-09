@@ -1,4 +1,4 @@
-import { ReturnUserDto } from "src/user/dtos/returnUser.dto";
+import { ReturnUserDto } from "../../user/dtos/returnUser.dto";
 import { ReturnProvinciaDto } from "./returnProvincia.dto";
 import { ReturnMunicipioDto } from "./returnMunicipio.dto";
 import { EnderecoEntity } from "../interface/enderecos.entity";

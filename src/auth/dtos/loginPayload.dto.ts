@@ -1,4 +1,4 @@
-import { UserEntity } from "src/user/dtos/interface/user.entity";
+import { UserEntity } from "../../user/dtos/interface/user.entity";
 
 export class LoginPayloadDto{
     sub!: number;

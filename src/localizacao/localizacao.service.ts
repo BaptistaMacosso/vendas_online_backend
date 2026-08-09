@@ -1,11 +1,11 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ProvinciaEntity } from './interface/provincias.entity';
 import { MunicipioEntity } from './interface/municipios.entity';
 import { EnderecoEntity } from './interface/enderecos.entity';
 import { Repository } from 'typeorm';
-import { CacheService } from 'src/cache/cache.service';
-import { UserService } from 'src/user/user.service';
+import { CacheService } from '../cache/cache.service';
+import { UserService } from '../user/user.service';
 import { CreateEnderecoDto } from './dtos/createEndereco.dto';
 
 @Injectable()

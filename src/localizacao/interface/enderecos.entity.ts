@@ -10,7 +10,7 @@ import {
 
 import { ProvinciaEntity } from './provincias.entity';
 import { MunicipioEntity } from './municipios.entity';
-import { UserEntity } from 'src/user/dtos/interface/user.entity';
+import { UserEntity } from '../../user/dtos/interface/user.entity';
 
 @Entity('enderecos')
 export class EnderecoEntity {

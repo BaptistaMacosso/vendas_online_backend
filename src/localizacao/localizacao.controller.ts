@@ -5,9 +5,9 @@ import { MunicipioEntity } from './interface/municipios.entity';
 import { CreateEnderecoDto } from './dtos/createEndereco.dto';
 import { ReturnEnderecoDto } from './dtos/returnEndereco.dto';
 import { ReturnEnderecoCriadoDto } from './dtos/returnEnderecoCriado.dto';
-import { Roles } from 'src/decorators/user-roles.decorator';
-import { UserType } from 'src/user/enums/user-type.enum';
-import { UserId } from 'src/decorators/user-id.decorator';
+import { Roles } from '../decorators/user-roles.decorator';
+import { UserType } from '../user/enums/user-type.enum';
+import { UserId } from '../decorators/user-id.decorator';
 
 @Roles(UserType.User)
 @Controller('localizacao')

@@ -3,7 +3,7 @@ import type { CreateUserDto } from './dtos/createUser.dto';
 import { UserService } from './user.service';
 import { UserEntity } from './dtos/interface/user.entity';
 import { ReturnUserDto } from './dtos/returnUser.dto';
-import { ReturnEnderecoDto } from 'src/localizacao/dtos/returnEndereco.dto';
+import { ReturnEnderecoDto } from '../localizacao/dtos/returnEndereco.dto';
 
 @Controller('user')
 export class UserController {

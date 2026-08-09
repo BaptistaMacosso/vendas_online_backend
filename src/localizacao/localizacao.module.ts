@@ -6,8 +6,8 @@ import { ProvinciaEntity } from './interface/provincias.entity';
 import { MunicipioEntity } from './interface/municipios.entity';
 import { EnderecoEntity } from './interface/enderecos.entity';
 import { CacheModule as  CacheModuleNest} from '@nestjs/cache-manager';
-import { CacheModule } from 'src/cache/cache.module';
-import { UserModule } from 'src/user/user.module';
+import { CacheModule } from '../cache/cache.module';
+import { UserModule } from '../user/user.module';
 
 
 @Module({
