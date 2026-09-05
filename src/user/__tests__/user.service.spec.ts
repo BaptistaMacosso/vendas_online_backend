@@ -7,6 +7,7 @@ import { userEntityMock } from '../__mocks__/user.mock';
 import { BadRequestException, NotFoundException } from '@nestjs/common';
 import { createUserDtoMock } from '../__mocks__/create-user.mock';
 import * as bcrypt from 'bcrypt';
+import { describe, beforeEach, it } from 'node:test';
 
 describe('UserService', () => {
   let service: UserService;

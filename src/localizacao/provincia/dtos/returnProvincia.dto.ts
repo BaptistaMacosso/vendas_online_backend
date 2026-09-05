@@ -1,5 +1,6 @@
 import { ProvinciaEntity } from "../interface/provincias.entity";
 
+
 export class ReturnProvinciaDto{
     nomeProvincia!: string;
 

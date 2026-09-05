@@ -1,4 +1,4 @@
-import { EnderecoEntity } from "../../../localizacao/interface/enderecos.entity";
+import { EnderecoEntity } from "../../../localizacao/endereco/interface/enderecos.entity";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 
 @Entity({name: 'user'})

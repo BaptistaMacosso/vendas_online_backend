@@ -1,24 +1,24 @@
 import { Module } from '@nestjs/common';
-import { LocalizacaoController } from './localizacao.controller';
-import { LocalizacaoService } from './localizacao.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProvinciaEntity } from './interface/provincias.entity';
-import { MunicipioEntity } from './interface/municipios.entity';
-import { EnderecoEntity } from './interface/enderecos.entity';
-import { CacheModule as  CacheModuleNest} from '@nestjs/cache-manager';
-import { CacheModule } from '../cache/cache.module';
+import { ProvinciaEntity } from './provincia/interface/provincias.entity';
+import { MunicipioEntity } from './municipio/interface/municipios.entity';
+import { EnderecoEntity } from './endereco/interface/enderecos.entity';
 import { UserModule } from '../user/user.module';
+import { ProvinciaModule } from './provincia/provincia.module';
+import { MunicipioModule } from './municipio/municipio.module';
+import { EnderecoModule } from './endereco/endereco.module';
 
 
 @Module({
   imports: [
-    CacheModuleNest.register(),
-    CacheModule,
     TypeOrmModule.forFeature([ProvinciaEntity, MunicipioEntity, EnderecoEntity],
     ),
     UserModule,
+    ProvinciaModule,
+    MunicipioModule,
+    EnderecoModule,
   ],
-  controllers: [LocalizacaoController],
-  providers: [LocalizacaoService]
+  controllers: [],
+  providers: []
 })
 export class LocalizacaoModule {}

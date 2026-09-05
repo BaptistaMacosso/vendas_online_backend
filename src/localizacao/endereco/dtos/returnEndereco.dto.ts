@@ -1,7 +1,8 @@
-import { ReturnUserDto } from "../../user/dtos/returnUser.dto";
+import { ReturnMunicipioDto } from "../../../localizacao/municipio/dtos/returnMunicipio.dto";
+import { ReturnProvinciaDto } from "../../../localizacao/provincia/dtos/returnProvincia.dto";
+import { ReturnUserDto } from "../../../user/dtos/returnUser.dto";
 import { EnderecoEntity } from "../interface/enderecos.entity";
-import { ReturnMunicipioDto } from "./returnMunicipio.dto";
-import { ReturnProvinciaDto } from "./returnProvincia.dto";
+
 
 export class ReturnEnderecoDto {
     user!: ReturnUserDto;

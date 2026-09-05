@@ -3,11 +3,10 @@ import { UserModule } from './user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LocalizacaoModule } from './localizacao/localizacao.module';
-import { CacheModule } from './cache/cache.module';
+import { AppCacheModule } from './cache/cache.module';
 import { AuthModule } from './auth/auth.module';
 import { RolesGuard } from './guards/rolesGuard.guard';
 import { APP_GUARD } from '@nestjs/core';
-import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -29,9 +28,8 @@ import { JwtModule } from '@nestjs/jwt';
     }),
     UserModule,
     LocalizacaoModule,
-    CacheModule,
+    AppCacheModule,
     AuthModule,
-    JwtModule,
   ],
   controllers: [],
   providers: [{

@@ -8,9 +8,9 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { ProvinciaEntity } from './provincias.entity';
-import { MunicipioEntity } from './municipios.entity';
-import { UserEntity } from '../../user/dtos/interface/user.entity';
+import { ProvinciaEntity } from '../../provincia/interface/provincias.entity';
+import { MunicipioEntity } from '../../municipio/interface/municipios.entity';
+import { UserEntity } from '../../../user/dtos/interface/user.entity';
 
 @Entity('enderecos')
 export class EnderecoEntity {

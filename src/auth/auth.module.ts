@@ -17,6 +17,10 @@ import type { StringValue } from 'ms'; // Importa o tipo StringValue do pacote '
     }),
   ],
   providers: [AuthService],
-  controllers: [AuthController]
+  controllers: [AuthController],
+   exports: [
+    AuthService,
+    JwtModule,
+  ],
 })
 export class AuthModule {}

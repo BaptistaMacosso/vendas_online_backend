@@ -9,8 +9,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import { ProvinciaEntity } from './provincias.entity';
-import { EnderecoEntity } from './enderecos.entity';
+import { ProvinciaEntity } from '../../provincia/interface/provincias.entity';
+import { EnderecoEntity } from '../../endereco/interface/enderecos.entity';
 
 @Entity('municipios')
 export class MunicipioEntity {
